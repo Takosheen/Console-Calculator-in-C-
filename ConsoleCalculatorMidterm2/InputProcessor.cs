@@ -8,11 +8,11 @@ namespace ConsoleCalculatorMidterm2
     {
         Calculation _calculation = new Calculation();
         Calculator _calculator = new Calculator();
+        InputHistory _history = new InputHistory();
         public void Start()
         {
             Console.WriteLine("Please choose an operation(+,-,/,*,>/ for square root, ^2 for squaring the number), or view the history of calculations with 'H'");
             string userInput = Console.ReadLine();
-            _calculation.SetOperation(userInput);
             switch (userInput)
             {
                 case "+":
@@ -62,6 +62,7 @@ namespace ConsoleCalculatorMidterm2
                 double b = Double.Parse(Console.ReadLine());
                 _calculation.SetInputB(b);
                 _calculator.GetResult(_calculation);
+                _history.AddHistory(_calculation);
                 Start();
             }
             catch (Exception e)
@@ -71,7 +72,13 @@ namespace ConsoleCalculatorMidterm2
         }
         public void ViewHistory()
         {
-            
+            List<Calculation> calcList = _history.GetHistory();
+            Calculation[] calcArray = calcList.ToArray();
+            for(int i = 0; i < calcArray.Length; i++)
+            {
+                Console.WriteLine(calcArray[i].ToString());
+            }
+           
         }
 
     }
