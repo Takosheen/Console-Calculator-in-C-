@@ -4,7 +4,9 @@ using System.Text;
 
 namespace ConsoleCalculatorMidterm2
 {
-    class InputHistory
+    public class InputHistory
     {
+        List<Calculation> CalcList = new List<Calculation>();
+
     }
 }
