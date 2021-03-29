@@ -21,6 +21,7 @@ namespace ConsoleCalculatorMidterm2
             Console.WriteLine("Enter two numbers, one at a time: ");
             double a = Double.Parse(Console.ReadLine());
             calc.SetInputA(a);
+
             Console.WriteLine("Enter the last number: ");
             double b = Double.Parse(Console.ReadLine());
             calc.SetInputB(b);
@@ -28,41 +29,43 @@ namespace ConsoleCalculatorMidterm2
 
             //change cases to call methods in pub
             // Console.WriteLine(e.Message);
-            switch (userInput)
-            {
-                case "+":
-                    pub.PubAdd(calc,userInput);
-                    return;
-                case "-":
-                    pub.PubSub(calc, userInput);
-                    return;
-                case "/":
-                    pub.PubDiv(calc, userInput);
-                    return;
-                case "*":
-                    pub.PubMult(calc, userInput);
-                    return;
-                case ">/":
-                    pub.PubSqrt(calc, userInput);
-                    return;
-                case "^2":
-                    pub.PubPow(calc, userInput);
-                    return;
-                case "H":
-                    pub.PubHist(calc);
-                    return;
-                case "end":
-                    return;
-                default:
-                    Console.WriteLine("Invalid operation. Enter a valid operation");
-                    return;
-            }
+
+                switch (userInput)
+                {
+                    case "+":
+                        pub.PubAdd(calc, userInput);
+                        return;
+                    case "-":
+                        pub.PubSub(calc, userInput);
+                        return;
+                    case "/":
+                        pub.PubDiv(calc, userInput);
+                        return;
+                    case "*":
+                        pub.PubMult(calc, userInput);
+                        return;
+                    case ">/":
+                        pub.PubSqrt(calc, userInput);
+                        return;
+                    case "^2":
+                        pub.PubPow(calc, userInput);
+                        return;
+                    case "H":
+                        pub.PubHist(calc, userInput);
+                        return;
+                    case "end":
+                        return;
+                    default:
+                        Console.WriteLine("Invalid operation. Enter a valid operation");
+                        return;
+                }
+
+            
         }
         public void Calculate(Calculation calc)
         {
             try
             {
-
                 _calculator.GetResult(calc);
                 _history.AddHistory(calc);
                 Start();
@@ -72,7 +75,7 @@ namespace ConsoleCalculatorMidterm2
                 Console.WriteLine(e.Message);
             }
         }
-        public void ViewHistory(Calculation calc)
+        public void ViewHistory()
         {
             List<Calculation> calcList = _history.GetHistory();
             Calculation[] calcArray = calcList.ToArray();

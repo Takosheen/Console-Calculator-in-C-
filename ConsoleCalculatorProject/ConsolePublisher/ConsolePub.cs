@@ -23,36 +23,46 @@ namespace ConsoleCalculatorProject.ConsolePublisher
         {
             InputProcessor _proc = new InputProcessor();
             calc.SetOperation(operation);
-            _proc.Calculate(calc);
+            CalculationArgs calcArgs = new CalculationArgs(calc, operation);
+            OnSubtraction(calcArgs);
+
         }
         public void PubMult(Calculation calc, String operation)
         {
             InputProcessor _proc = new InputProcessor();
             calc.SetOperation(operation);
-            _proc.Calculate(calc);
+            CalculationArgs calcArgs = new CalculationArgs(calc, operation);
+            OnMultiplication(calcArgs);
         }
         public void PubDiv(Calculation calc, String operation)
         {
             InputProcessor _proc = new InputProcessor();
             calc.SetOperation(operation);
-            _proc.Calculate(calc);
+            CalculationArgs calcArgs = new CalculationArgs(calc, operation);
+            OnSubtraction(calcArgs);
         }
         public void PubPow(Calculation calc, String operation)
         {
             InputProcessor _proc = new InputProcessor();
             calc.SetOperation(operation);
+            CalculationArgs calcArgs = new CalculationArgs(calc, operation);
+            OnPower(calcArgs);
             _proc.Calculate(calc);
         }
         public void PubSqrt(Calculation calc, String operation)
         {
             InputProcessor _proc = new InputProcessor();
             calc.SetOperation(operation);
-            _proc.Calculate(calc);
+            CalculationArgs calcArgs = new CalculationArgs(calc, operation);
+            OnSqrt(calcArgs);
+
         }
-        public void PubHist(Calculation calc)
+        public void PubHist(Calculation calc, String operation)
         {
             InputProcessor _proc = new InputProcessor();
-            _proc.ViewHistory(calc);
+            CalculationArgs calcArgs = new CalculationArgs(calc, operation);
+            OnHist(calcArgs);
+
         }
 
         protected virtual void OnAddition(CalculationArgs c)
@@ -81,6 +91,11 @@ namespace ConsoleCalculatorProject.ConsolePublisher
             calcEvent(this, c);
         }
         protected virtual void OnSqrt(CalculationArgs c)
+        {
+            EventHandler<CalculationArgs> calcEvent = RaiseCalcEvent;
+            calcEvent(this, c);
+        }
+        protected virtual void OnHist(CalculationArgs c)
         {
             EventHandler<CalculationArgs> calcEvent = RaiseCalcEvent;
             calcEvent(this, c);

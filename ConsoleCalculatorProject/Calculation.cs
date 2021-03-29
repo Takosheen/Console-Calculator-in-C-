@@ -43,7 +43,7 @@ namespace ConsoleCalculatorMidterm2
         {
             result = _result;
         }
-        public string ToString()
+        public override string ToString()
         {
             return a + " " +b + " " + operation + " " + result + " ";
         }

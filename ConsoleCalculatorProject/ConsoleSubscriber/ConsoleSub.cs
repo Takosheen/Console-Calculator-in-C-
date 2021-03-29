@@ -55,5 +55,10 @@ namespace ConsoleCalculatorProject.ConsolePublisher
             InputProcessor _proc = new InputProcessor();
             _proc.Calculate(e.GetCalculation);
         }
+        void HandleHistory(object sender, CalculationArgs e)
+        {
+            InputProcessor _proc = new InputProcessor();
+            _proc.ViewHistory();
+        }
     }
 }
