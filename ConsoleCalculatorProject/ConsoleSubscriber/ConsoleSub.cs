@@ -11,6 +11,7 @@ namespace ConsoleCalculatorProject.ConsolePublisher
 
         public ConsoleSub(string operation, ConsolePub pub)
         {
+            Console.WriteLine("Event raised.");
             _operation = operation;
             pub.RaiseCalcEvent += HandleAddition;
             pub.RaiseCalcEvent += HandleDifference;

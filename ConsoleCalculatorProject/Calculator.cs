@@ -13,30 +13,31 @@ namespace ConsoleCalculatorMidterm2
             {
                 case "+":
                    _result = Operations.Sum(Calc.GetInputA(),Calc.GetInputB());
-                    Console.WriteLine(_result);
+                    Console.WriteLine("The Result is: "+_result);
                     return _result;
                 case "-":
                     _result = Operations.Difference(Calc.GetInputA(), Calc.GetInputB());
-                    Console.WriteLine(_result);
+                    Console.WriteLine("The Result is: " + _result);
                     return _result;
                 case "/":
                     _result = Operations.Division(Calc.GetInputA(), Calc.GetInputB());
-                    Console.WriteLine(_result);
+                    Console.WriteLine("The Result is: " + _result);
                     return _result;
                 case "*":
                     _result = Operations.Multiplication(Calc.GetInputA(), Calc.GetInputB());
-                    Console.WriteLine(_result);
+                    Console.WriteLine("The Result is: " + _result);
                     return _result;
                 case ">/":
                     _result = Operations.Sqrt(Calc.GetInputA());
-                    Console.WriteLine(_result);
+                    Console.WriteLine("The Result is: " + _result);
                     return _result;
                 case "^2":
                     _result = Operations.Squared(Calc.GetInputA());
-                    Console.WriteLine(_result);
+                    Console.WriteLine("The Result is: " + _result);
                     return _result;
                 default:
                     _result = Operations.Unassigned(Calc.GetInputA(),Calc.GetInputB());
+                    Console.WriteLine("Operation unassigned. Enter a valid operation.");
                     return _result;
             }
                 

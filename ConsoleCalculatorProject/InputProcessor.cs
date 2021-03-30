@@ -66,8 +66,9 @@ namespace ConsoleCalculatorMidterm2
         {
             try
             {
-                _calculator.GetResult(calc);
                 _history.AddHistory(calc);
+                _calculator.GetResult(calc);
+                Console.WriteLine(_history.GetHistory());
                 Start();
             }
             catch (Exception e)
