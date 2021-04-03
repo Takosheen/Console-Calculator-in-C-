@@ -9,51 +9,61 @@ namespace ConsoleCalculatorMidterm2
     {
 
         Calculator _calculator = new Calculator();
-        InputHistory _history = new InputHistory();
+
+        Calculation calc = new Calculation();
 
         public void Start()
         {
+
             var pub = new ConsolePub();
-            Calculation calc = new Calculation();
-            Console.WriteLine("Please choose an operation(+,-,/,*,>/ for square root, ^2 for squaring the number), or view the history of calculations with 'H'");
-            string userInput = Console.ReadLine();
-            
-            Console.WriteLine("Enter two numbers, one at a time: ");
-            double a = Double.Parse(Console.ReadLine());
-            calc.SetInputA(a);
-
-            Console.WriteLine("Enter the last number: ");
-            double b = Double.Parse(Console.ReadLine());
-            calc.SetInputB(b);
-            var sub = new ConsoleSub(userInput, pub);
-
+            Console.WriteLine("Please choose an operation(+,-,/,*,>/ for square root, ^2 for squaring the number), or view the history of calculations with 'History'");
+            // pub.PubOp(calc);
+          /*  string userInput="end";
+          try
+            {*/
+                string userInput = Console.ReadLine();
+                var sub = new ConsoleSub(userInput, pub); 
+            //  userInput = calc.GetOperation();
             //change cases to call methods in pub
             // Console.WriteLine(e.Message);
+            /*    }
+                catch(Exception e)
+                {
+                    pub.PubFailed(e);
+                }*/
 
-                switch (userInput)
+            switch (userInput)
                 {
                     case "+":
-                        pub.PubAdd(calc, userInput);
+                        calc.SetOperation(userInput);
+                        pub.PubAdd(getInput(calc), userInput);
                         return;
                     case "-":
-                        pub.PubSub(calc, userInput);
+                        calc.SetOperation(userInput);
+                        pub.PubSub(getInput(calc), userInput);
                         return;
                     case "/":
-                        pub.PubDiv(calc, userInput);
+                        calc.SetOperation(userInput);
+                        pub.PubDiv(getInput(calc), userInput);
                         return;
                     case "*":
-                        pub.PubMult(calc, userInput);
+                        calc.SetOperation(userInput);
+                        pub.PubMult(getInput(calc), userInput);
                         return;
                     case ">/":
-                        pub.PubSqrt(calc, userInput);
+                        calc.SetOperation(userInput);
+                        pub.PubSqrt(getInput(calc), userInput);
                         return;
                     case "^2":
-                        pub.PubPow(calc, userInput);
+                        calc.SetOperation(userInput);
+                        pub.PubPow(getInput(calc), userInput);
                         return;
-                    case "H":
-                        pub.PubHist(calc, userInput);
+                    case "History":
+                        //pub.PubHist(calc, userInput);
+                        InputHistory.GetInstance().ViewHistory();
                         return;
                     case "end":
+                        System.Environment.Exit(1);
                         return;
                     default:
                         Console.WriteLine("Invalid operation. Enter a valid operation");
@@ -62,29 +72,40 @@ namespace ConsoleCalculatorMidterm2
 
             
         }
+        public Calculation getInput(Calculation calc)
+        {
+            Console.WriteLine(calc.GetOperation());
+
+            if (calc.GetOperation() == ">/" || calc.GetOperation() == "^2")
+            {
+                Console.WriteLine("Enter the number: ");
+                double a = Double.Parse(Console.ReadLine());
+                calc.SetInputA(a);
+            }
+            else
+            {
+                Console.WriteLine("Enter two numbers, one at a time: ");
+                double a = Double.Parse(Console.ReadLine());
+                calc.SetInputA(a);
+                Console.WriteLine("Enter the last number: ");
+                double b = Double.Parse(Console.ReadLine());
+                calc.SetInputB(b);
+
+            }
+
+            return calc;
+        }
         public void Calculate(Calculation calc)
         {
+            
             try
             {
-                _history.AddHistory(calc);
-                _calculator.GetResult(calc);
-                Console.WriteLine(_history.GetHistory());
                 Start();
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
-        }
-        public void ViewHistory()
-        {
-            List<Calculation> calcList = _history.GetHistory();
-            Calculation[] calcArray = calcList.ToArray();
-            for(int i = 0; i < calcArray.Length; i++)
-            {
-                Console.WriteLine(calcArray[i].ToString());
-            }
-           
         }
 
     }

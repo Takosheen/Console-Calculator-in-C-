@@ -14,7 +14,7 @@ namespace ConsoleCalculatorProject.ConsolePublisher
         {
             /*InputProcessor _proc = new InputProcessor();
             OnAddition(calc);*/
-
+            
             calc.SetOperation(operation);
             CalculationArgs calcArgs = new CalculationArgs(calc, operation);
             OnAddition(calcArgs);
@@ -47,7 +47,6 @@ namespace ConsoleCalculatorProject.ConsolePublisher
             calc.SetOperation(operation);
             CalculationArgs calcArgs = new CalculationArgs(calc, operation);
             OnPower(calcArgs);
-            _proc.Calculate(calc);
         }
         public void PubSqrt(Calculation calc, String operation)
         {
@@ -59,12 +58,76 @@ namespace ConsoleCalculatorProject.ConsolePublisher
         }
         public void PubHist(Calculation calc, String operation)
         {
-            InputProcessor _proc = new InputProcessor();
             CalculationArgs calcArgs = new CalculationArgs(calc, operation);
             OnHist(calcArgs);
 
         }
 
+        public void PubOp(Calculation calc)
+        {
+            string userInput = Console.ReadLine();
+            calc.SetOperation(userInput);
+            Console.WriteLine("Operation Received");
+            Console.WriteLine(userInput);
+            CalculationArgs calcArgs = new CalculationArgs(calc, userInput);
+            OnOperation(calcArgs);
+
+        }
+        public void PubInput1(Calculation calc)
+        {
+            
+            double Input1 = Double.Parse(Console.ReadLine());
+            calc.SetInputA(Input1);
+            Console.WriteLine("Input Received");
+            Console.WriteLine(Input1);
+            String s = "";
+            CalculationArgs calcArgs = new CalculationArgs(calc, s);
+            OnOperation(calcArgs);
+
+
+
+        }
+        public void PubInput2(Calculation calc)
+        {
+            double Input2 = Double.Parse(Console.ReadLine());
+            calc.SetInputB(Input2);
+            Console.WriteLine("Input Received");
+            Console.WriteLine(Input2);
+            String s = "";
+            CalculationArgs calcArgs = new CalculationArgs(calc, s);
+            OnOperation(calcArgs);
+
+        }
+        protected virtual void OnOperation(CalculationArgs c)
+        {
+
+            EventHandler<CalculationArgs> calcEvent = RaiseCalcEvent;
+            calcEvent(this, c);
+        }
+        protected virtual void OnInput1(CalculationArgs c)
+        {
+            EventHandler<CalculationArgs> calcEvent = RaiseCalcEvent;
+            calcEvent(this, c);
+        }
+
+        protected virtual void OnInput2(CalculationArgs c)
+        {
+            EventHandler<CalculationArgs> calcEvent = RaiseCalcEvent;
+            calcEvent(this, c);
+        }
+       /* public void PubFailed(CalculationArgs e)
+        {
+            OnFailure(e);
+        }
+        protected virtual void OnFailure(CalculationArgs e)
+        {
+            if (e != null)
+            {
+                EventHandler<CalculationArgs> calcEvent = RaiseCalcEvent;
+                calcEvent(this, e);
+            }
+            Console.WriteLine("Calc Args is not null. Moving on.");
+        }*/
         protected virtual void OnAddition(CalculationArgs c)
         {
             EventHandler<CalculationArgs> calcEvent = RaiseCalcEvent;

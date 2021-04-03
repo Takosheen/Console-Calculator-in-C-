@@ -14,6 +14,6 @@ namespace ConsoleCalculatorProject.ConsolePublisher
             }
             public string GetOperation { get; set; }
             public Calculation GetCalculation { get; set; }
-
+            public Exception GetException { get; set; }
     }
 }
