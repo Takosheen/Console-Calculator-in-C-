@@ -38,6 +38,7 @@ namespace ConsoleCalculatorMidterm2
                     }*/
 
                 Calculation calc = new Calculation();
+
                 switch (userInput)
                     {
                         case "+":

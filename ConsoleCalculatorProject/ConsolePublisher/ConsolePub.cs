@@ -18,16 +18,12 @@ namespace ConsoleCalculatorProject.ConsolePublisher
 
         public void PubAdd(Calculation calc, String operation)
         {
-            /*InputProcessor _proc = new InputProcessor();
-            OnAddition(calc);*/
-            
             calc.SetOperation(operation);
             CalculationArgs calcArgs = new CalculationArgs(calc, operation);
             OnAddition(calcArgs);
         }
         public void PubSub(Calculation calc, String operation)
         {
-            InputProcessor _proc = new InputProcessor();
             calc.SetOperation(operation);
             CalculationArgs calcArgs = new CalculationArgs(calc, operation);
             OnSubtraction(calcArgs);
@@ -35,28 +31,25 @@ namespace ConsoleCalculatorProject.ConsolePublisher
         }
         public void PubMult(Calculation calc, String operation)
         {
-            InputProcessor _proc = new InputProcessor();
+
             calc.SetOperation(operation);
             CalculationArgs calcArgs = new CalculationArgs(calc, operation);
             OnMultiplication(calcArgs);
         }
         public void PubDiv(Calculation calc, String operation)
         {
-            InputProcessor _proc = new InputProcessor();
             calc.SetOperation(operation);
             CalculationArgs calcArgs = new CalculationArgs(calc, operation);
             OnSubtraction(calcArgs);
         }
         public void PubPow(Calculation calc, String operation)
         {
-            InputProcessor _proc = new InputProcessor();
             calc.SetOperation(operation);
             CalculationArgs calcArgs = new CalculationArgs(calc, operation);
             OnPower(calcArgs);
         }
         public void PubSqrt(Calculation calc, String operation)
         {
-            InputProcessor _proc = new InputProcessor();
             calc.SetOperation(operation);
             CalculationArgs calcArgs = new CalculationArgs(calc, operation);
             OnSqrt(calcArgs);
