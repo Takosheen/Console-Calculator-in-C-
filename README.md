@@ -1,8 +1,8 @@
-Terence Au
-Professor Williams
-IS 421
-April 3rd, 2021
-Features:
+-Terence Au
+-Professor Williams
+-IS 421
+-April 3rd, 2021
+-Features:
 - Calculations are stored in objects/models
 - Addition, Subtraction, Division, Multiplication, Square root, Square
 - History records previous calculations that are stored as objects in a list
