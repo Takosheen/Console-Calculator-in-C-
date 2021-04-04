@@ -86,7 +86,6 @@ namespace ConsoleCalculatorMidterm2
         }
         public Calculation getInput(Calculation calc)
         {
-            Console.WriteLine(calc.GetOperation());
 
             if (calc.GetOperation() == ">/" || calc.GetOperation() == "^2")
             {
