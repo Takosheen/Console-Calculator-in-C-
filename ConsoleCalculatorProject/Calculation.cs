@@ -45,7 +45,11 @@ namespace ConsoleCalculatorMidterm2
         }
         public override string ToString()
         {
-            return a + " " +b + " " + operation + " " + result + " ";
+            if(operation == ">/" || operation == "^2")
+            {
+                return a + " " + operation + " " + result + " ";
+            }
+            return a + " " +operation + " " + b + " = " + result + " ";
         }
     }
 }
