@@ -30,10 +30,14 @@ namespace ConsoleCalculatorMidterm2
         {
             return CalcList;
         }
+        public void InsertHistory(Calculation calc,int a)
+        {
+            CalcList.Insert(a, calc);
+            CalcList.RemoveAt(a);
+        }
         public void ViewHistory()
         {
             Calculation[] calcArray = CalcList.ToArray();
-            Console.WriteLine("View History");
             for (int i = 0; i < calcArray.Length; i++)
             {
                 Console.WriteLine(calcArray[i].ToString());

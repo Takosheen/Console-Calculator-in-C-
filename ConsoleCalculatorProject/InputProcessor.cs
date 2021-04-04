@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using ConsoleCalculatorProject;
 
 namespace ConsoleCalculatorMidterm2
 {
@@ -10,67 +11,77 @@ namespace ConsoleCalculatorMidterm2
 
         Calculator _calculator = new Calculator();
 
-        Calculation calc = new Calculation();
+        
 
         public void Start()
         {
 
-            var pub = new ConsolePub();
-            Console.WriteLine("Please choose an operation(+,-,/,*,>/ for square root, ^2 for squaring the number), or view the history of calculations with 'History'");
             // pub.PubOp(calc);
-          /*  string userInput="end";
-          try
-            {*/
+            /*  string userInput="end";
+            try
+              {*/
+
+            var pub = new ConsolePub();
+            var sub = new ConsoleSub(pub);
+            while (true)
+            {
+                Console.WriteLine("Please choose an operation(+,-,/,*,>/ for square root, ^2 for squaring the number), or view the history of calculations with 'History', and change the history with 'Modify History'");
                 string userInput = Console.ReadLine();
-                var sub = new ConsoleSub(userInput, pub); 
-            //  userInput = calc.GetOperation();
-            //change cases to call methods in pub
-            // Console.WriteLine(e.Message);
-            /*    }
-                catch(Exception e)
-                {
-                    pub.PubFailed(e);
-                }*/
+                int count = 0;
+                //  userInput = calc.GetOperation();
+                //change cases to call methods in pub
+                // Console.WriteLine(e.Message);
+                /*    }
+                    catch(Exception e)
+                    {
+                        pub.PubFailed(e);
+                    }*/
 
-            switch (userInput)
-                {
-                    case "+":
-                        calc.SetOperation(userInput);
-                        pub.PubAdd(getInput(calc), userInput);
-                        return;
-                    case "-":
-                        calc.SetOperation(userInput);
-                        pub.PubSub(getInput(calc), userInput);
-                        return;
-                    case "/":
-                        calc.SetOperation(userInput);
-                        pub.PubDiv(getInput(calc), userInput);
-                        return;
-                    case "*":
-                        calc.SetOperation(userInput);
-                        pub.PubMult(getInput(calc), userInput);
-                        return;
-                    case ">/":
-                        calc.SetOperation(userInput);
-                        pub.PubSqrt(getInput(calc), userInput);
-                        return;
-                    case "^2":
-                        calc.SetOperation(userInput);
-                        pub.PubPow(getInput(calc), userInput);
-                        return;
-                    case "History":
-                        //pub.PubHist(calc, userInput);
-                        InputHistory.GetInstance().ViewHistory();
-                        return;
-                    case "end":
-                        System.Environment.Exit(1);
-                        return;
-                    default:
-                        Console.WriteLine("Invalid operation. Enter a valid operation");
-                        return;
+                Calculation calc = new Calculation();
+                switch (userInput)
+                    {
+                        case "+":
+                            calc.SetOperation(userInput);
+                            pub.PubAdd(getInput(calc), userInput);
+                            break;
+                        case "-":
+                            calc.SetOperation(userInput);
+                            pub.PubSub(getInput(calc), userInput);
+                            break;
+                        case "/":
+                            calc.SetOperation(userInput);
+                            pub.PubDiv(getInput(calc), userInput);
+                            break;
+                        case "*":
+                            calc.SetOperation(userInput);
+                            pub.PubMult(getInput(calc), userInput);
+                            break;
+                        case ">/":
+                            calc.SetOperation(userInput);
+                            pub.PubSqrt(getInput(calc), userInput);
+                            break;
+                        case "^2":
+                            calc.SetOperation(userInput);
+                            pub.PubPow(getInput(calc), userInput);
+                            break;
+                        case "History":
+                            //pub.PubHist(calc, userInput);
+                            InputHistory.GetInstance().ViewHistory();
+                            break;
+                        case "Modify History":
+                            ChangeHistory hist = new ChangeHistory();
+                            hist.CHistory(count);
+                            break;
+                        case "end":
+                            System.Environment.Exit(1);
+                            break;
+                        default:
+                            Console.WriteLine("Invalid operation. Enter a valid operation");
+                            break;
                 }
+            }
 
-            
+
         }
         public Calculation getInput(Calculation calc)
         {
@@ -107,6 +118,5 @@ namespace ConsoleCalculatorMidterm2
                 Console.WriteLine(e.Message);
             }
         }
-
     }
 }

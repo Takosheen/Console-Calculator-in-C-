@@ -8,8 +8,14 @@ namespace ConsoleCalculatorProject.ConsolePublisher
 {
     public class ConsolePub
     {
-
         public event EventHandler<CalculationArgs> RaiseCalcEvent;
+        public event EventHandler<CalculationArgs> RaiseAddition;
+        public event EventHandler<CalculationArgs> RaiseSubtraction;
+        public event EventHandler<CalculationArgs> RaiseMultiplication;
+        public event EventHandler<CalculationArgs> RaiseDivision;
+        public event EventHandler<CalculationArgs> RaiseSquare;
+        public event EventHandler<CalculationArgs> RaiseSqrt;
+
         public void PubAdd(Calculation calc, String operation)
         {
             /*InputProcessor _proc = new InputProcessor();
@@ -130,32 +136,32 @@ namespace ConsoleCalculatorProject.ConsolePublisher
         }*/
         protected virtual void OnAddition(CalculationArgs c)
         {
-            EventHandler<CalculationArgs> calcEvent = RaiseCalcEvent;
+            EventHandler<CalculationArgs> calcEvent = RaiseAddition;
             calcEvent(this, c);
         }
         protected virtual void OnSubtraction(CalculationArgs c)
         {
-            EventHandler<CalculationArgs> calcEvent = RaiseCalcEvent;
+            EventHandler<CalculationArgs> calcEvent = RaiseSubtraction;
             calcEvent(this, c);
         }
         protected virtual void OnMultiplication(CalculationArgs c)
         {
-            EventHandler<CalculationArgs> calcEvent = RaiseCalcEvent;
+            EventHandler<CalculationArgs> calcEvent = RaiseMultiplication;
             calcEvent(this, c);
         }
         protected virtual void OnDivision(CalculationArgs c)
         {
-            EventHandler<CalculationArgs> calcEvent = RaiseCalcEvent;
+            EventHandler<CalculationArgs> calcEvent = RaiseDivision;
             calcEvent(this, c);
         }
         protected virtual void OnPower(CalculationArgs c)
         {
-            EventHandler<CalculationArgs> calcEvent = RaiseCalcEvent;
+            EventHandler<CalculationArgs> calcEvent = RaiseSquare;
             calcEvent(this, c);
         }
         protected virtual void OnSqrt(CalculationArgs c)
         {
-            EventHandler<CalculationArgs> calcEvent = RaiseCalcEvent;
+            EventHandler<CalculationArgs> calcEvent = RaiseSqrt;
             calcEvent(this, c);
         }
         protected virtual void OnHist(CalculationArgs c)
