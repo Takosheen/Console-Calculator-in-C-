@@ -40,3 +40,7 @@
 - https://refactoring.guru/design-patterns/singleton/csharp/example
 - https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/events/how-to-publish-events-that-conform-to-net-framework-guidelines
 - https://www.tutorialsteacher.com/csharp/csharp-list
+- https://refactoring.guru/design-patterns/facade
+- https://refactoring.guru/design-patterns/proxy
+- https://refactoring.guru/design-patterns/decorator
+- 
