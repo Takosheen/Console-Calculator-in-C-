@@ -32,7 +32,7 @@
 ![image](https://user-images.githubusercontent.com/60273779/113783378-a8f01580-9701-11eb-91e6-2824f6240b4e.png)
 5. Proxy
 -  A separate calculation object is made to be modified with user input and modifications to history.
-![image](https://user-images.githubusercontent.com/60273779/113783337-97a70900-9701-11eb-8127-1d859f3af0a2.png)
+- ![image](https://user-images.githubusercontent.com/60273779/113783337-97a70900-9701-11eb-8127-1d859f3af0a2.png)
 
 
 
